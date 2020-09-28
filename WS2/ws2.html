@@ -15,8 +15,18 @@
             for (i=0; i<50;1++) {
                 repeatingText();
             }
-            document.getElementsByTagName('images')[0].src = "https://i.mainstreetartisans.com/upload/iskusstvo-i-razvlecheniya/41/biografiya-arnolda-shvarceneggera-izvestnogo-aktera-i-kulturista.jpg";
-            
+			
+			funktio kuva() {
+				var images= [
+					"http://farm4.staticflickr.com/3691/11268502654_f28f05966c_m.jpg", 
+					"http://farm1.staticflickr.com/33/45336904_1aef569b30_n.jpg", 
+					"http://farm6.staticflickr.com/5211/5384592886_80a512e2c9.jpg"
+				];
+			
+			var luku = Math.round(Math.random() * 2);
+            document.write('<img src = "' + images[luku]+'" > ');
+			}
+			
             if(navigator.userAgent.indexOf("Mozilla") ) {
 					location.href = 'http://mozilla.org';
             } else {

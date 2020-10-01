@@ -33,7 +33,7 @@
         document.getElementsByTagName('h2')[1].style.color = "blue";
         document.getElementsByTagName('h2')[1].style.background = "grey";
         document.getElementsByTagName('h2')[1].style.fontSize = "45";
-        document.getElementsByTagName('h2')[1].style.fontStyle = "italic"
+        document.getElementsByTagName('h2')[1].style.fontStyle = "italic";
     }
 
     function modHeading3() {
@@ -60,16 +60,50 @@
 
     function car() {
         var choice = document.getElementById("mySelect").value;
+        if (choice == "BMW") {
+            document.getElementsByTagName('img')[0].src = "http://www.mercedes-benz.fi/passengercars/_jcr_content/image.MQ6.2.2x.20190401083207.png";
+        } else if (choice == "Mercedes") {
+            document.getElementsByTagName('img')[0].src = "http://www.mercedes-benz.fi/passengercars/_jcr_content/image.MQ6.2.2x.20190401083207.png";
+        } else if (choice == "Audi") {
+            document.getElementsByTagName('img')[0].src = "http://mb.cision.com/Public/1022/2833750/a66543b50f56826f_800x800ar.jpg";
+        } else if (choice == "Volvo") {
+            document.getElementsByTagName('img')[0].src = "http://moottori.fi/wp-content/uploads/2020/03/Audi_A3_2020_6-640x360.jpg";
+        }
         alert(choice);
     }
 
     function borders() {
-        pic.style.borders = "1";
-    }
-    function bordersOut() {
-        pic.style.borders = "0";
+        var img2 = document.getElementsByTagName('img')[0];
+        img2.style.border = '2px solid #E8272C';
     }
 
+    function bordersOut() {
+        var img2 = document.getElementsByTagName('img')[0];
+        img2.style.border = "0";
+    }
+
+    function changePosition() {
+        document.getElementById('carimage').style.left = "200";
+        document.getElementById('carimage').style.top = "500";
+    }
+
+
+    function doMove() {
+        var y = document.getElementsByTagName('img')[0];
+        y.style.position = 'relative';
+        y.style.left = -100 + 'px';
+        var topVal = parseInt(y.style.left);
+        y.style.left = (topVal + 1) + 'px';
+        console.log("Moved to " + topVal + "px");
+    }
+
+    function fadeOut() {
+        document.getElementsByTagName('img')[0];
+    }
+
+    function hideit() {
+        document.getElementsByTagName('img')[0].style.visibility = "none";
+    }
 </script>
 
 <h1>Workshop 4: DOM Scripting</h1>
@@ -144,8 +178,8 @@
     <br>
     <br>
     <img onmouseover="borders()" onmouseout="bordersOut()" style="left: 0px; opacity: 1;"
-        src="http://cdn.bmwblog.com/wp-content/uploads/2015/11/BMW-2-Series-Gran-Coupe-Rendering.jpg" width="400"
-        id="carimage" /></li>
+        src="http://www.valokuvataiteenmuseo.fi/sites/default/files/styles/opengraph/public/pages/2019-08/kok_tunnus_banneri.png?itok=YyCUwF7Q"
+        width="400" id="carimage" /></li>
 <h2>Exercise 4: Moving things around</h2>
 <ul>
     <li>
@@ -160,7 +194,7 @@
             <li><button onclick="setInterval(function(){fadeOut();},250);" />Fade out!</button> Wite a function
                 fadeOut() which will slowly decrease the opacity of the image from 1.0 to 0 making it fade out. The
                 Interval required has already been added to the onclick -event of the list item</li>
-            <li><button onclick="hide()" />Disappear! </button>Finally, write JavaScript which will remove the image
+            <li><button onclick="hideit()" />Disappear! </button>Finally, write JavaScript which will remove the image
                 from the page</li>
         </ol>
     </li>

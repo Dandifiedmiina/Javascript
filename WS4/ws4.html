@@ -83,26 +83,41 @@
     }
 
     function changePosition() {
-        document.getElementById('carimage').style.left = "200";
-        document.getElementById('carimage').style.top = "500";
+        document.getElementById('carimage').style.position = 'relative';
+        document.getElementById('carimage').style.left = "-200px";
+        document.getElementById('carimage').style.top = "500px";
     }
 
 
     function doMove() {
         var y = document.getElementsByTagName('img')[0];
         y.style.position = 'relative';
-        y.style.left = -100 + 'px';
-        var topVal = parseInt(y.style.left);
-        y.style.left = (topVal + 1) + 'px';
+        var topVal = parseInt(y.style.right);
+        y.style.right = (topVal + 10) + 'px';
         console.log("Moved to " + topVal + "px");
     }
 
     function fadeOut() {
-        document.getElementsByTagName('img')[0];
+        var f = document.getElementsByTagName('img')[0];
+        f.fadeOut();
     }
 
+    function insertRows() {
+        var table = document.getElementById("data");
+        var i = table.length;
+        var tr = table.insertRow(i);
+        var td1 = tr.insertCell(0);
+        var td2 = tr.insertCell(1);
+        var td3 = tr.insertCell(2);
+
+        td1.innerHTML = document.getElementById('textfield');
+        td2.innerHTML = document.getElementById('textfield2');
+        td3.innerHTML = document.getElementById('textfield3');
+    }
+
+
     function hideit() {
-        document.getElementsByTagName('img')[0].style.visibility = "none";
+        document.getElementsByTagName('img')[0].style.display = "none";
     }
 </script>
 

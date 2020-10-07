@@ -91,7 +91,7 @@
 
     function doMove() {
         var y = document.getElementsByTagName('img')[0];
-        y.style.position = 'relative';
+        y.position = 'relative';
         var topVal = parseInt(y.style.right);
         y.style.right = (topVal + 10) + 'px';
         console.log("Moved to " + topVal + "px");
@@ -99,7 +99,7 @@
 
     function fadeOut() {
         var f = document.getElementsByTagName('img')[0];
-        f.fadeOut();
+
     }
 
     function insertRows() {
@@ -110,9 +110,9 @@
         var td2 = tr.insertCell(1);
         var td3 = tr.insertCell(2);
 
-        td1.innerHTML = document.getElementById('textfield');
-        td2.innerHTML = document.getElementById('textfield2');
-        td3.innerHTML = document.getElementById('textfield3');
+        td1.innerHTML = document.getElementById('textfield').value;
+        td2.innerHTML = document.getElementById('textfield2').value;
+        td3.innerHTML = document.getElementById('textfield3').value;
     }
 
 

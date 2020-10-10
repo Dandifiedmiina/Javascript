@@ -20,12 +20,71 @@
 </style>
 <script>
   //<!-- Javascript goes here -->
+
+  var h = document.createElement("b");
+  var i = document.createElement("b")
+  var t = document.createTextNode("* Please fill in properly");
+  var c = document.createTextNode("*5e alennus yli 5 vuoden");
+  h.appendChild(t);
+  i.appendChild(c);
+
   function getData() {
-    var nimi = document.forms["0"]["fname"].value;
-    alert(nimi);
+    var nimi = document.forms["0"]["email"].value;
+    var pituus = nimi.length;
+    var kommentti = document.forms["0"]["comment"].value;
+    var pituusKommentti = kommentti.length;
+
+    if (pituus > 6 && pituus < 15) {
+      alert(nimi);
+    }
+
+    else if (pituus < 6 && pituus > 15) {
+      if (pituusKommentti > 50) {
+        document.getElementsByTagName('textarea')[0].style.border = "thick solid red";
+        document.getElementById('kommentti2').appendChild(h);
+        return false;
+      }
+
+      document.getElementsByTagName('input')[0].style.border = "thick solid red";
+      document.getElementById('feedback').appendChild(h);
+      return false;
+    }
   }
 
+  function membership() {
+    var tilaus = document.getElementById("type");
+    var tilausNimi = tilaus.options[tilaus.selectedIndex].value;
+    var maara = document.forms["1"]["years"].value;
+    var summa = 0;
 
+
+    if (tilausNimi == "basic") {
+      summa = maara * 10;
+
+    } else if (tilausNimi == "premium") {
+      summa = maara * 15;
+
+    } else if (tilausNimi == "gold") {
+      summa = maara * 20;
+    } else if (tilausNimi == "platinum") {
+      summa = maara * 25;
+    }
+
+    if (maara > 5) {
+      summa = (summa * 0.8) - 5;
+      document.getElementById('years').appendChild(i);
+    } else if (maara > 1) {
+      summa = (summa * 0.8);
+    }
+
+    document.getElementById("cost").value = summa;
+    return false;
+  }
+
+  function calculate() {
+
+
+  }
 //<!-- Exercise #1 A -->
 
 </script>
@@ -61,9 +120,11 @@
 
   Email address:<br>
   <input type="text" name="email">
+  <span id="feedback"></span></br>
   <br>
   Comment:<br>
-  <textarea name="comment"></textarea>
+  <textarea name="comment" id="kommentti1"></textarea>
+  <span id="kommentti2"></span></br>
   <br>
   <input type="submit" value="Send">
 </form>
@@ -82,7 +143,7 @@
 <p data-line="24">c) Should he pay for 5 years or more, he will get the normal 20%
   discount, but will also be given an extra 5€ discount with a special greetings text on
   screen.</p>
-<form action="" method="post" id="theForm">
+<form action="" method="post" id="theForm" onsubmit="return membership()">
   <fieldset>
     <legend>Create Your Membership</legend>
     <p>Complete this form to calculate your membership. There's a 20% discount if

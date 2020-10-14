@@ -17,6 +17,10 @@
     border: 1px solid gray;
     width: 50%;
   }
+
+  .hide {
+    visibility: hidden;
+  }
 </style>
 <script>
   //<!-- Javascript goes here -->
@@ -82,8 +86,29 @@
   }
 
   function calculate() {
+    var q = document.getElementById("quantity").value;
+    var p = document.getElementById("price").value;
+    var x = document.getElementById("tax").value;
+    var d = document.getElementById("discount").value;
 
+    var qInt = parseInt(q, 10);
+    var pFloat = parseFloat(p);
+    var xFloat = parseFloat(x);
+    var dFloat = parseFloat(d);
 
+    if (qInt > 100) {
+      dFloat = dFloat * 2;
+      document.getElementById("discount").value = dFloat;
+    }
+    var total = ((qInt * pFloat) * ((xFloat / 100) + 1)) - dFloat;
+
+    if (total > 100) {
+
+      document.getElementById("total").value = total;
+      document.getElementById("shipping").value = "0,00";
+    } else {
+      document.getElementById("total").value = total + 10;
+    }
   }
 //<!-- Exercise #1 A -->
 
@@ -183,6 +208,8 @@
   <div><label for="price">Price Per Unit</label><input type="text" name="price" id="price" value="1.00" required></div>
   <div><label for="tax">VAT (%)</label><input type="text" name="tax" id="tax" value="0.0" required></div>
   <div><label for="discount">Discount</label><input type="text" name="discount" id="discount" value="0.00" required>
+  </div>
+  <div><label for="shipping">Shipping</label><input type="text" name="shipping" id="shipping" value="10.00" required>
   </div>
   <div><label for="total">Total</label><input type="text" name="total" id="total" value="0.00"></div>
   <div><input type="submit" value="Calculate" id="submit" onClick="calculate()"></div>

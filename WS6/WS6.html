@@ -40,7 +40,19 @@
     }
 
     function loadData() {
-        document.getElementById("sessiondata").innerHTML = localStorage.getItem("destinationS");
+        document.getElementById("sessiondata").innerHTML = localStorage.getItem("destinationS") + " " + localStorage.getItem("arrivalS") + " " + localStorage.getItem("cb1S");
+    }
+
+    function sessionData() {
+        var detail = [];
+        //var detail = {};
+
+        $('input').each(function (index) {
+            detail[index] = $(this).val();
+            //detail.index = $(this).val();
+        });
+
+        console.log(detail);
     }
 
 
@@ -108,6 +120,42 @@
         should be used. Copy the form above here and implement sessionstorage for it. See what
         happens, when you close the browser. You can utilize developer tools to study the data (F12,
         select Application tab, then LocalStorage on the left).</p>
+    <p>
+        <label for="textfield">Destination:</label>
+        <input type="text" name="textfield" id="destination">
+        <br>
+        <label for="textfield">Arrival Date:</label>
+        <input type="text" name="textfield" id="arrival">
+        <br>
+    <div id="services">
+        Services:
+        <label>
+            <br>
+            <input type="checkbox" name="CheckboxGroup1" value="Internet" id="CheckboxGroup1_0">
+            Internet</label>
+        <br>
+        <label>
+            <input type="checkbox" name="CheckboxGroup1" value="AC" id="CheckboxGroup1_1">
+            Air Conditioning</label>
+        <br>
+        <label>
+            <input type="checkbox" name="CheckboxGroup1" value="minibar" id="CheckboxGroup1_2">
+            Minibar</label>
+        <br>
+        <label>
+            <input type="checkbox" name="CheckboxGroup1" value="car" id="CheckboxGroup1_3">
+            Car rent</label>
+        <br>
+        <label>
+            <input type="checkbox" name="CheckboxGroup1" value="sauna" id="CheckboxGroup1_4">
+            Sauna
+        </label>
+
+        </p>
+    </div>
+    <p>
+        <input type="button" name="button" id="button" value="Reserve" onclick="sessionData()">
+    </p>
     <h2>Exercise 4:</h2>
     <p>Try to add localstorage features to your project work. This means, that todo-list for
         example, would remember the data that you have entered between browser refresh and even

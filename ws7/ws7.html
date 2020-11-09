@@ -56,8 +56,21 @@
 		}
 	}
 
-	fuction exefour() {
-		
+	function exefour() {
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.open("GET", "http://joeroganexp.joerogan.libsynpro.com/rss", true);
+		xmlhttp.send();
+		xmlhttp.onreadystatechange = function () {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				var doc = xmlhttp.responseXML;
+				var titles = doc.getElementsByTagName('title');
+				for (i = 0; i < titles.length; i++) {
+					title = "<li>" + titles[i].innerHTML + "</li>";
+					document.getElementById("newsfeed").innerHTML += title;
+				}
+
+			}
+		}
 	}
 
 

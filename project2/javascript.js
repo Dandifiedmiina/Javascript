@@ -1,8 +1,7 @@
 
-//lisätään muuttujia, joita tarvitsemme useammin eri funktioissa
+//lisätään muutamia globaaleja muuttujia, joita tarvitsemme useammin eri funktioissa
 var searchSplit;
 var searchApi;
-var myloc;
 
 function searchMovie(){
 
@@ -61,7 +60,7 @@ function parseData(myObj) {
             var td3 = tr.insertCell(2);
 
             //lisätään ensimmäisen rivin ensimmäiseen soluun otsikko ja arvostelu
-            td1.innerHTML = "THE MOVIE"
+            td1.innerHTML = "MOVIE"
             //1.rivin ja 2.solun tiivistelmä 
             td2.innerHTML = "PLOT"
 
@@ -82,7 +81,7 @@ function parseData(myObj) {
                     titleApi+="%20"+titleSplit[y];
                 }
             //kutsutaan funktio, missä tehdään ensimmäiselle otsikolle uusi haku
-            searchLocation(titleApi);
+
 
           //luodaan seuraava rivi ja solut, hyödnnetään for-looppia
           tr = table.insertRow(i+1);
@@ -91,13 +90,11 @@ function parseData(myObj) {
           td3 = tr.insertCell(2)    
         
         //Syötetään soluihin haetut arvot otsikko+arvostelu
-        td1.innerHTML = myObj.results[i].title + " " + myObj.results[i].vote_average + "/10"
+            td1.innerHTML = myObj.results[i].title + " " + myObj.results[i].vote_average + "/10"
         //tiivistelmä
-        td2.innerHTML = myObj.results[i].overview;
+            td2.innerHTML = myObj.results[i].overview;
         //IMDB:stä saadut tiedot
-
-        
-        td3.innerTEXT = myloc;            
+            td3.innerHTML = myloc;            
         }
 }
 
@@ -105,13 +102,13 @@ function parseData(myObj) {
 function searchLocation(titleApi){
 
     //tallennetaan API-osoite
-    var API = "http://www.omdbapi.com/?i=tt3896198&apikey=6d850d11&t=";
+    var API2 = "http://www.omdbapi.com/?i=tt3896198&apikey=6d850d11&t=";
     //yhditetään API-osite ja haun arvo(t), jolloin voimme tehdä palauttaa oikean arvon
-    var call = API+titleApi;
-
+    var call2 = API2+titleApi;
+    var mylocS;
     //tehdään AJAX haku
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.open("GET", call, true);
+    var xmlhttp2 = new XMLHttpRequest();
+    xmlhttp.open("GET", call2, true);
 
     //lähetetään haku serverille
     xmlhttp.send();
@@ -120,9 +117,8 @@ function searchLocation(titleApi){
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             //käsitellään vastaus
             var jsonL=xmlhttp.responseText;
-            myloc = JSON.parse(jsonL);
+            mylocS = JSON.parse(jsonL);
         }
-
     }
 
 }

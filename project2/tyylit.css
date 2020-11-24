@@ -4,6 +4,7 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
+  width: 80%;
 }
 
 #searchBlock {
@@ -11,13 +12,29 @@
   border-color: cadetblue;
 }
 
-table,
+table {
+  background-color: gainsboro;
+  table-layout: fixed;
+  width: 100%;
+}
 tr,
 td {
-  background-color: gainsboro;
   border: solid 1px black;
 }
 
+.moviesTable tbody tr:nth-child(even) {
+  background-color: darkgrey;
+}
+
+.moviesTable tbody tr:hover {
+  background-color: black;
+  color: white;
+}
+
+.moviesTable tbody tr:nth-child(1) {
+  font-size: 25px;
+  font-weight: bold;
+}
 .myButton {
   box-shadow: inset 0px 1px 0px 0px #ffffff;
   background: linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
